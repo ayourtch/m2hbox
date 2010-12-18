@@ -1,0 +1,6 @@
+Mongrel2 hacking-in-a-box repository
+
+Needs: fossil in your path.
+
+"make" will pull the source, checkout, compile, and run a simple static site on localhost:6767
+
