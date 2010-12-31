@@ -1,0 +1,12 @@
+UUID="f400bf85-4538-4f7a-8908-67e313d515c2"
+CERTDIR="./certs"
+# Generate the key
+openssl genrsa -des3 -passout file:./pass -out ${CERTDIR}/${UUID}.key 1024
+# Generate the CSR
+cat answers-csr | openssl req -new -passin file:./pass -key ${CERTDIR}/${UUID}.key -out ${CERTDIR}/${UUID}.csr
+# Remove the passprase from the key
+mv ${CERTDIR}/${UUID}.key ${CERTDIR}/${UUID}.key.orig
+openssl rsa -in ${CERTDIR}/${UUID}.key.orig -passin file:./pass -out ${CERTDIR}/${UUID}.key
+# Generate the self-signed cert
+openssl x509 -req -days 365 -in ${CERTDIR}/${UUID}.csr -signkey  ${CERTDIR}/${UUID}.key -out ${CERTDIR}/${UUID}.crt
+
