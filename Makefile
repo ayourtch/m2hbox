@@ -17,6 +17,9 @@ clean:
 run-static:
 	(PATH=`pwd`/source/tools/m2sh/build:`pwd`/source/bin:$PATH; cd site-static; m2sh load; m2sh start --name test)
 
+run-ssl:
+	(PATH=`pwd`/source/tools/m2sh/build:`pwd`/source/bin:$PATH; cd site-static-ssl; m2sh load; m2sh start --name test)
+
 distclean:
 	rm -rf source repo
 
