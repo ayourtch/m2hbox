@@ -1,0 +1,7 @@
+This script will install mongrel2 along with any needed dependencies on 
+a debian-derived system. Since we try to use the latest and greatest,
+we do the direct install in lieu of the apt-get supplied package. 
+
+This script also sits in gliese framework. Eventually it will decide which
+place it will be in.
+
