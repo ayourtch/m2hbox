@@ -7,6 +7,10 @@ fetch:
 co:
 	echo Checking out Mongrel2 from repository
 	mkdir source
+	(cd source; git init; fossil export --git ../repo/mongrel2.fossil | git fast-import; git checkout trunk)
+co2:
+	echo Checking out Mongrel2 from repository
+	mkdir source
 	(cd source; fossil open ../repo/mongrel2.fossil)
 build:
 	echo Building Mongrel2
