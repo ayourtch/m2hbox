@@ -15,6 +15,9 @@ co2:
 build:
 	echo Building Mongrel2
 	(cd source; make)
+build-dev:
+	echo Building Mongrel2
+	(cd source; make dev)
 clean:
 	(cd source; make clean)
 
