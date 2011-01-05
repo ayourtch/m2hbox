@@ -1,0 +1,12 @@
+#!/bin/sh
+NC="nc -w 1 localhost 6767"
+echo ================  Running without cookie header:
+(cat request cr ; sleep 3)| $NC
+echo ================  Running with single cookie header:
+(cat request cookie-single-header cr ; sleep 3)| $NC
+echo ================  Running with cookie header split in 2 halves:
+(cat request cookie1of2 cookie2of2 cr ; sleep 3)| $NC
+echo ================  Running with first cookie header only:
+(cat request cookie1of2 cr ; sleep 3)| $NC
+echo ================  Running with second cookie header only:
+(cat request cookie2of2 cr ; sleep 3)| $NC

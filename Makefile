@@ -20,12 +20,18 @@ build-dev:
 	(cd source; make dev)
 clean:
 	(cd source; make clean)
+	(cd live-tests; make clean)
 
 run-static:
 	(PATH=`pwd`/source/tools/m2sh/build:`pwd`/source/bin:$PATH; cd site-static; m2sh load; m2sh start --name test)
 
 run-ssl:
 	(PATH=`pwd`/source/tools/m2sh/build:`pwd`/source/bin:$PATH; cd site-static-ssl; m2sh load; m2sh start --name test)
+
+livetest:
+	echo Please wait, running tests...
+	(cd live-tests; make; ./vivosector ../source/bin/mongrel2 ../site-static "f400bf85-4538-4f7a-8908-67e313d515c2" 5 tests 127.0.0.1 6767 2>stderr >stdout)
+	echo Done.
 
 distclean:
 	rm -rf source repo
